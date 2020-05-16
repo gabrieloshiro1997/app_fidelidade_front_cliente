@@ -1,6 +1,6 @@
 import { 
-    CADASTRAR_USUARIO_SUCCESS
-} from '../actions/Usuario/UsuarioActionTypes';
+    CADASTRAR_CLIENTE_SUCCESS
+} from '../actions/Cliente/ClienteActionTypes';
 
 import { NotificationManager } from 'react-notifications'
 
@@ -8,8 +8,8 @@ const initialState = {}
 
 export default (state = initialState, action) => {
     switch(action.type){
-        case CADASTRAR_USUARIO_SUCCESS: {
-            NotificationManager.success('Usuário cadastrado com sucesso', 'Sucesso');
+        case CADASTRAR_CLIENTE_SUCCESS: {
+            NotificationManager.success('Cliente cadastrado com sucesso', 'Sucesso');
             return {
                 ...state
             }
