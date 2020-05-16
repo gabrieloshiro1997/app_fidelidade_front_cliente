@@ -17,8 +17,8 @@ import { Form, Text } from 'informed';
 
 import { NotificationManager } from 'react-notifications'
 
-import TipoAcessoUsuarioEnum from '../../../utils/TipoAcessoUsuarioEnum';
 import { CadastrarCliente } from '../../../redux/actions/Usuario/UsuarioActions';
+import '../css/Login.css';
 
 class CadastroCliente extends Component {
     constructor(props){
@@ -31,29 +31,30 @@ class CadastroCliente extends Component {
 	}
 
 	salvarCliente() {
-      let data = this.formApi.getValues();
+		let data = this.formApi.getValues();
+		let acessoUsuarioCliente = 3;
 
-      let nome = data.nome; 
-      let cpf = data.cpf; 
-	  let email = data.email; 
-	  let acessoUsuario = TipoAcessoUsuarioEnum.Cliente;
+		let nome = data.nome; 
+		let cpf = data.cpf; 
+		let email = data.email; 
+		let acessoUsuario = acessoUsuarioCliente;
 
-      if(!nome || !cpf || !email){
-        NotificationManager.warning('Preencha todos campos!', 'Atenção');
-        return;
-      }
+		if(!nome || !cpf || !email){
+			NotificationManager.warning('Preencha todos campos!', 'Atenção');
+			return;
+		}
 
-      let usuario = { 
-        nome,
-        cpf,
-		email,
-		acessoUsuario
-      };
+		let usuario = { 
+			nome,
+			cpf,
+			email,
+			acessoUsuario
+		};
 
 		this.props.CadastrarCliente(usuario)
 			.then((res) => {
 				if(res.type != "CADASTRAR_CLIENTE_FAIL") {
-					this.props.history.push('/Cadastro/Cliente/Sucesso');
+					this.props.history.push('/Cadastro/Sucesso');
 				}
 			}
 		)
@@ -62,7 +63,7 @@ class CadastroCliente extends Component {
     render() {
     return (
 		<div className="animated fadeIn">
-			<div className="app flex-row align-items-center">
+			<div className="app flex-row align-items-center bg-image">
 				<Container>
 					<Row className="justify-content-center">
 						<Col xs="8" sm="8">
@@ -107,8 +108,8 @@ class CadastroCliente extends Component {
 						</Col>
 					</Row>
 					<div className="text-center">
-						<Link to="/Cadastro">
-							<Button color="light" width='50' className="mt-3" active tabIndex={-1}>Voltar</Button>
+						<Link to="/Login">
+							<Button color="info" width='50' className="mt-3" active tabIndex={-1}>Voltar</Button>
 						</Link>
 					</div>
 				</Container>
