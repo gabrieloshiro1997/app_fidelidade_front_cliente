@@ -17,7 +17,7 @@ import { Form, Text } from 'informed';
 
 import { NotificationManager } from 'react-notifications'
 
-import { CadastrarCliente } from '../../../redux/actions/Usuario/UsuarioActions';
+import { CadastrarUsuario } from '../../../redux/actions/Usuario/UsuarioActions';
 import '../css/Login.css';
 
 class CadastroCliente extends Component {
@@ -51,7 +51,7 @@ class CadastroCliente extends Component {
 			acessoUsuario
 		};
 
-		this.props.CadastrarCliente(usuario)
+		this.props.CadastrarUsuario(usuario)
 			.then((res) => {
 				if(res.type != "CADASTRAR_CLIENTE_FAIL") {
 					this.props.history.push('/Cadastro/Sucesso');
@@ -119,4 +119,4 @@ class CadastroCliente extends Component {
   }
 }
 
-export default connect(null, { CadastrarCliente })(CadastroCliente);
+export default connect(null, { CadastrarUsuario })(CadastroCliente);
