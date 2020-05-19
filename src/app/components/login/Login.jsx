@@ -20,7 +20,6 @@ class Login extends Component {
     }
 
     handleChangeEmail(e){
-        console.log(e.target.value);
         this.setState({
             ...this.state,
             email: e.target.value
@@ -28,7 +27,6 @@ class Login extends Component {
     }
 
     handleChangeSenha(e){
-        console.log(e.target.value);
         this.setState({
             ...this.state,
             senha: e.target.value
@@ -50,7 +48,7 @@ class Login extends Component {
 
         this.props.LoginUsuario(this.state.email, this.state.senha)
         .then((res) => {
-			if(res.type == "LOGIN_SUCCESS") {
+			if(res.type === "LOGIN_SUCCESS") {
 				this.props.history.push('/Home');
 			}
 		});

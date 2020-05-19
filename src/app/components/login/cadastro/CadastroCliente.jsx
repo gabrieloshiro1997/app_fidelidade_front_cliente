@@ -53,7 +53,7 @@ class CadastroCliente extends Component {
 
 		this.props.CadastrarCliente(usuario)
 			.then((res) => {
-				if(res.type != "CADASTRAR_CLIENTE_FAIL") {
+				if(res.type !== "CADASTRAR_CLIENTE_FAIL") {
 					this.props.history.push('/Cadastro/Sucesso');
 				}
 			}
