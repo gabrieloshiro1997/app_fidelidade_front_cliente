@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Row } from 'reactstrap';
 import CardHome from '../global/Card';
-
-export default class Home extends Component {
-    render(){
-        return(
+import { ObterPontuacoes } from '../../redux/actions/Pontuacao/PontuacaoActions';
+class Home extends Component {
+	constructor(props) {
+		super(props);
+		this.props.ObterPontuacoes();
+	}
+	render() {
+		return (
 			<div className="animated fadeIn">
 				<Row>
-					<>
-						<CardHome classeCor="info" quantidade="1" tipoCard="Sua pontuação" icone="icon-user" />
-						<CardHome classeCor="info" quantidade="1" tipoCard="Sua pontuação" icone="icon-user" />
-						<CardHome classeCor="info" quantidade="1" tipoCard="Sua pontuação" icone="icon-user" />
-						<CardHome classeCor="info" quantidade="1" tipoCard="Sua pontuação" icone="icon-user" />
-					</>
+						{
+							this.props.pontuacoes.map((pontuacao, index) => (
+								<CardHome classeCor="info" quantidade={pontuacao.valor} empresa={pontuacao.nome_fantasia} icone="icon-user" />
+							))
+						}
 				</Row>
-            </div>
+			</div>
 
-        )
-    }
+		)
+	}
 }
+
+const MapStateToProps = (state) => {
+	return {
+		pontuacoes: state.PontuacaoReducer.pontuacoes
+	}
+}
+export default connect(MapStateToProps, { ObterPontuacoes })(Home)
