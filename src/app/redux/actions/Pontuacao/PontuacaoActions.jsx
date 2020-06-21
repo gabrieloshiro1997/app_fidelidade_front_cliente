@@ -1,4 +1,8 @@
-import { OBTER_PONTUACOES } from './PontuacaoActionTypes';
+import { 
+	OBTER_PONTUACOES, 
+	DEFINIR_DADOS_PONTUACAO,
+	LIMPAR_DADOS_PONTUACAO
+} from './PontuacaoActionTypes';
 
 export const ObterPontuacoes = () => ({
 	type: OBTER_PONTUACOES,
@@ -8,4 +12,14 @@ export const ObterPontuacoes = () => ({
 			method: 'GET'
 		}
 	}
+})
+
+export const DefinirDadosPontuacao = (pontuacao) => ({
+	type: DEFINIR_DADOS_PONTUACAO,
+	payload: pontuacao
+});
+
+export const LimparDadosPontuacao = (pontuacao) => ({
+	type: LIMPAR_DADOS_PONTUACAO,
+	payload: pontuacao
 })
