@@ -12,7 +12,7 @@ export default {
 	{
 		name: 'Resgate',
 		url: '/Resgate',
-		icon: 'icon-home'
+		icon: 'icon-star'
 	  }
   ],
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, Table } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, Table, ModalFooter } from 'reactstrap';
 import { connect } from 'react-redux';
 
 import TabelaRecompensas from './TabelaRecompensas';
@@ -12,13 +12,16 @@ class ModalResgate extends Component {
 	render() {
 		return (
 			<>
-				<Modal isOpen={this.props.showModalResgate} onClick={() => this.props.EsconderModalResgate()}>
+				<Modal size="xl" isOpen={this.props.showModalResgate} backdrop={true} toggle={() => this.props.EsconderModalResgate()}>
 					<ModalHeader toggle={() => this.props.EsconderModalResgate()}>
 						Resgatar Recompensa
 					</ModalHeader>
 					<ModalBody>
 						<TabelaRecompensas />
 					</ModalBody>
+					<ModalFooter>
+
+					</ModalFooter>
 				</Modal>
 			</>
 		)

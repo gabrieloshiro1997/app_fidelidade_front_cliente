@@ -19,7 +19,7 @@ class TabelaResgate extends Component {
 		this.props.DefinirDadosPontuacao(pontuacao);
 		this.props.ObterRecompensas(pontuacao.id)
 			.then((res) => {
-				if(!res.error) {
+				if (!res.error) {
 					this.props.ExibirModalResgate();
 				}
 				else {
@@ -43,8 +43,8 @@ class TabelaResgate extends Component {
 						this.props.pontuacoes.map((pontuacao, index) => (
 							<tr key={index}>
 								<td>{pontuacao.nome_fantasia}</td>
-								<td>{pontuacao.valor}</td>
 								<td>
+									{pontuacao.valor}
 									<Button className="float-right" color="success" onClick={() => this.exibirModal(pontuacao)}>Efetuar Resgate<i className="fa fa-plus ml-1"></i></Button>
 								</td>
 							</tr>

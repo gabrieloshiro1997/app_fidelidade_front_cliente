@@ -10,7 +10,12 @@ import { EsconderModalResgate, EfetuarResgate } from '../../redux/actions/Resgat
 class TabelaRecompensas extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			idRecompensaSelecionada: 0
+		}
 		this.efetuarResgate = this.efetuarResgate.bind(this);
+		this.exibirBotaoConfirmar = this.exibirBotaoConfirmar.bind(this);
+		this.esconderBotaoConfirmar = this.esconderBotaoConfirmar.bind(this);
 	}
 
 	efetuarResgate(idRecompensa) {
@@ -20,8 +25,21 @@ class TabelaRecompensas extends Component {
 				if (!res.error) {
 					this.props.ObterPontuacoes();
 					this.props.EsconderModalResgate();
+					NotificationManager.success("Recompensa resgatada com sucesso!", "Sucesso");
 				}
 			})
+	}
+
+	exibirBotaoConfirmar(idRecompensaSelecionada) {
+		this.setState({
+			idRecompensaSelecionada
+		});
+	}
+
+	esconderBotaoConfirmar() {
+		this.setState({
+			idRecompensaSelecionada: 0
+		});
 	}
 
 	render() {
@@ -51,7 +69,18 @@ class TabelaRecompensas extends Component {
 								{this.props.recompensas.map((recompensa, index) => (
 									<tr key={index} className="text-center align-middle">
 										<td className="text-left">{recompensa.descricao}</td>
-										<td className="text-left">{recompensa.pontos} <Button className="float-right btn-sm align-middle" color="success" onClick={() => this.efetuarResgate(recompensa.id)}><i class="fa fa-usd" aria-hidden="true"></i></Button></td>
+										<td className="text-left">{recompensa.pontos}
+											{this.state.idRecompensaSelecionada == recompensa.id && 
+												<div class="btn-group btn-sm float-right" role="group">
+													<button class="btn btn-sm btn-success" onClick={() => this.efetuarResgate(recompensa.id)}>Confirmar</button>
+													<button class="btn btn-sm btn-danger" onClick={() => this.esconderBotaoConfirmar()}>Cancelar</button>
+												</div>
+											}
+
+											{this.state.idRecompensaSelecionada != recompensa.id  &&
+												<Button className="float-right btn-sm align-middle" color="success" onClick={() => this.exibirBotaoConfirmar(recompensa.id)}>Resgatar</Button>
+											}
+										</td>
 									</tr>
 								))
 								}
