@@ -68,18 +68,18 @@ class TabelaRecompensas extends Component {
 							<tbody>
 								{this.props.recompensas.map((recompensa, index) => (
 									<>
-										{ recompensa.status == 1 &&
+										{ recompensa.status === 1 &&
 											<tr key={index} className="text-center align-middle">
 												<td className="text-left">{recompensa.descricao}</td>
 												<td className="text-left">{recompensa.pontos}
-													{this.state.idRecompensaSelecionada == recompensa.id &&
+													{this.state.idRecompensaSelecionada === recompensa.id &&
 														<div class="btn-group btn-sm float-right" role="group">
 															<button class="btn btn-sm btn-success" onClick={() => this.efetuarResgate(recompensa.id)}>Confirmar</button>
 															<button class="btn btn-sm btn-danger" onClick={() => this.esconderBotaoConfirmar()}>Cancelar</button>
 														</div>
 													}
 
-													{this.state.idRecompensaSelecionada != recompensa.id &&
+													{this.state.idRecompensaSelecionada !== recompensa.id &&
 														<Button className="float-right btn-sm align-middle" color="success" onClick={() => this.exibirBotaoConfirmar(recompensa.id)}>Resgatar</Button>
 													}
 												</td>

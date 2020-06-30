@@ -1,9 +1,9 @@
 import decode from 'jwt-decode';
-import { ACCESS_TOKEN } from '../utils/LocalStorageKeys';
+import { ACCESS_TOKEN_CLIENTE } from '../utils/LocalStorageKeys';
 
 export const isAuthenticated = () => {
     try {
-        const token = localStorage.getItem(ACCESS_TOKEN);
+        const token = localStorage.getItem(ACCESS_TOKEN_CLIENTE);
         
         const decoded = decode(token);
 

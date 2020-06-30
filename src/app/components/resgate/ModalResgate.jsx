@@ -6,9 +6,6 @@ import NavResgate from '../resgate/NavResgate';
 import { EsconderModalResgate } from '../../redux/actions/Resgate/ResgateActions';
 
 class ModalResgate extends Component {
-	constructor(props) {
-		super(props);
-	}
 	render() {
 		return (
 			<>

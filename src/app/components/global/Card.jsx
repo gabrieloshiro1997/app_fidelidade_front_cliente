@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { 
 	Col,
 	Card,
-	CardBody,
-	ButtonGroup
-
+	CardBody
 } from 'reactstrap';
 export default class CardHome extends Component {
     render(){

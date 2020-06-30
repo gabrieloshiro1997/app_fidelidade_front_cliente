@@ -1,5 +1,5 @@
 import {
-    ACCESS_TOKEN,
+    ACCESS_TOKEN_CLIENTE,
 	TIPO_ACESSO,
 	ID_CLIENTE
 } from '../../../config/utils/LocalStorageKeys'
@@ -14,13 +14,13 @@ const registerJwt = (data) => {
 	
 	const token = data.token;
 	const decoded = decode(token);
-    localStorage.setItem(ACCESS_TOKEN, data.token);           
+    localStorage.setItem(ACCESS_TOKEN_CLIENTE, data.token);           
     localStorage.setItem(TIPO_ACESSO, decoded.tipoUsuario);       
     localStorage.setItem(ID_CLIENTE, decoded.id);       
 }
 
 const Logout = () => {
-    localStorage.removeItem(ACCESS_TOKEN);           
+    localStorage.removeItem(ACCESS_TOKEN_CLIENTE);           
     localStorage.removeItem(TIPO_ACESSO);       
     localStorage.removeItem(ID_CLIENTE);          
        

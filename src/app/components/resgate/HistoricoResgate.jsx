@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table, Button, Row, Col, Card, CardBody } from 'reactstrap';
+import { Table, Row, Col } from 'reactstrap';
 import { ObterHistoricoResgateClientePorEstabelecimento } from '../../redux/actions/Resgate/ResgateActions';
 
 class HistoricoRecompensas extends Component {

@@ -14,6 +14,7 @@ const DefaultLayout = React.lazy(() => import('./containers/DefaultLayout'));
 const Login = React.lazy(() => import('./app/components/login/Login'));
 const CadastroCliente = React.lazy(() => import('./app/components/login/cadastro/CadastroCliente'));
 const CadastroClienteSucesso = React.lazy(() => import('./app/components/login/cadastro/CadastroClienteSucesso'));
+const ModalCliente = React.lazy(() => import('./app/components/cliente/ModalCliente'));
 
 const MapStateToProps = state => {    
   return {
@@ -40,6 +41,7 @@ const App = () => (
         <Loader />  
       </Switch>
       <Loader />
+	  <ModalCliente />
       <NotificationContainer />
     </React.Suspense>
   </BrowserRouter>
