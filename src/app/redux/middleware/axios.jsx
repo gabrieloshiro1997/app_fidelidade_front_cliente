@@ -4,6 +4,7 @@ import { NotificationManager } from 'react-notifications';
 
 import { ExibirLoading, EsconderLoading } from '../actions/Global/GlobalActions';
 import { ApiUrl } from '../../../config/utils/config';
+import { ACCESS_TOKEN_CLIENTE } from '../../../config/utils/LocalStorageKeys'
 
 const httpClient = axios.create({
   baseURL: ApiUrl
@@ -14,7 +15,7 @@ const onCompleteHandler = (data) => {
 };
 
 const requestInterceptor = ({ dispatch }, request) => {
-  request.headers['Authorization'] = `Bearer ${localStorage.getItem('ACCESS_TOKEN')}`;
+  request.headers['Authorization'] = `Bearer ${localStorage.getItem(ACCESS_TOKEN_CLIENTE)}`;
   dispatch(ExibirLoading());
   return request;
 };
