@@ -1,12 +1,17 @@
 import { 
 	OBTER_PONTUACOES_SUCCESS,
 	DEFINIR_DADOS_PONTUACAO,
-	LIMPAR_DADOS_PONTUACAO 
+	LIMPAR_DADOS_PONTUACAO,
+	OBTER_HISTORICO_PONTUACAO_CLIENTE_POR_ESTABELECIMENTO_SUCCESS,
+	OBTER_PONTUACAO_CLIENTE_COMPLETA_SUCCESS
+	
 } from '../actions/Pontuacao/PontuacaoActionTypes.jsx';
 
 const initialState = {
 	pontuacoes: [],
-	dadosPontuacao: {}
+	dadosPontuacao: {},
+	historicoPontuacao: [],
+	dadosPontuacaoCompleta: []
 }
 
 export default (state = initialState, action) => {
@@ -26,7 +31,7 @@ export default (state = initialState, action) => {
 					dadosPontuacao: {
 						id: action.payload.id,
 						nomeFantasia: action.payload.nome_fantasia,
-						valor: action.payload.valor
+						saldo: action.payload.saldo
 					}
 				}
 			}
@@ -35,6 +40,20 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				dadosPontuacao: initialState.dadosPontuacao
+			}
+		}
+
+		case OBTER_HISTORICO_PONTUACAO_CLIENTE_POR_ESTABELECIMENTO_SUCCESS: {
+			return {
+				...state,
+				historicoPontuacao: action.payload.data
+			}
+		}
+
+		case OBTER_PONTUACAO_CLIENTE_COMPLETA_SUCCESS: {
+			return {
+				...state,
+				dadosPontuacaoCompleta: action.payload.data
 			}
 		}
 

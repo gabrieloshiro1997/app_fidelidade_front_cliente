@@ -1,11 +1,14 @@
 import { 
 	EFETUAR_RESGATE_SUCCESS,
 	EXIBIR_MODAL_RESGATE,
-	ESCONDER_MODAL_RESGATE 
+	ESCONDER_MODAL_RESGATE,
+	OBTER_HISTORICO_RESGATE_CLIENTE_POR_ESTABELECIMENTO_SUCCESS 
 } from '../actions/Resgate/ResgateActionTypes.jsx';
 
 const initialState = {
-	showModalResgate: false
+	showModalResgate: false,
+	idEstabelecimentoSelecionado: null,
+	historicoResgate: []
 }
 
 export default (state = initialState, action) => {
@@ -21,7 +24,8 @@ export default (state = initialState, action) => {
 		{
 			return {
 				...state,
-				showModalResgate: true
+				showModalResgate: true,
+				idEstabelecimentoSelecionado: action.payload.idEstabelecimento
 			}
 		}
 
@@ -29,7 +33,15 @@ export default (state = initialState, action) => {
 		{
 			return {
 				...state,
-				showModalResgate: false
+				showModalResgate: false,
+				idEstabelecimentoSelecionado: null
+			}
+		}
+
+		case OBTER_HISTORICO_RESGATE_CLIENTE_POR_ESTABELECIMENTO_SUCCESS: {
+			return {
+				...state,
+				historicoResgate: action.payload.data
 			}
 		}
 		default:

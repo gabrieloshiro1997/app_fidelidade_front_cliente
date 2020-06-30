@@ -15,12 +15,11 @@ class TabelaResgate extends Component {
 	}
 
 	exibirModal(pontuacao) {
-
 		this.props.DefinirDadosPontuacao(pontuacao);
-		this.props.ObterRecompensas(pontuacao.id)
+		this.props.ObterRecompensas(pontuacao.id_estabelecimento)
 			.then((res) => {
 				if (!res.error) {
-					this.props.ExibirModalResgate();
+					this.props.ExibirModalResgate(pontuacao.id_estabelecimento);
 				}
 				else {
 					NotificationManager.error('Erro ao obter as recompensas', 'Erro');
@@ -44,7 +43,7 @@ class TabelaResgate extends Component {
 							<tr key={index}>
 								<td>{pontuacao.nome_fantasia}</td>
 								<td>
-									{pontuacao.valor}
+									{pontuacao.saldo}
 									<Button className="float-right" color="success" onClick={() => this.exibirModal(pontuacao)}>Efetuar Resgate<i className="fa fa-plus ml-1"></i></Button>
 								</td>
 							</tr>

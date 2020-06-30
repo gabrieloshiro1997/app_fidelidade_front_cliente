@@ -13,7 +13,7 @@ export default class CardHome extends Component {
 				<Card className={"text-white bg-" + this.props.classeCor}>
 				<CardBody className="pb-0">
 					<div className="text-value">{this.props.empresa}</div>
-					<h5 className="mt-20">{this.props.quantidade} Pontos</h5>
+					<h5 className="mt-20">{this.props.saldo} Pontos</h5>
 				</CardBody>
 				<div className="chart-wrapper mx-3" style={{ height: '70px' }}>
 				</div>

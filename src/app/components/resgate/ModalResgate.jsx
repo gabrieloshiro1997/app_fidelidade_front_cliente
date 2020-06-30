@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, Table, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import TabelaRecompensas from './TabelaRecompensas';
+import NavResgate from '../resgate/NavResgate';
 import { EsconderModalResgate } from '../../redux/actions/Resgate/ResgateActions';
 
 class ModalResgate extends Component {
@@ -17,7 +17,7 @@ class ModalResgate extends Component {
 						Resgatar Recompensa
 					</ModalHeader>
 					<ModalBody>
-						<TabelaRecompensas />
+						<NavResgate />
 					</ModalBody>
 					<ModalFooter>
 

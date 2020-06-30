@@ -5,7 +5,7 @@ const Resgate = React.lazy(() => import('./app/components/resgate/Resgate'));
 
 const routes = [
   { path: '/Home', exact: true, name: 'Home', component:  Home },
-  { path: '/Resgate', exact: true, name: 'Resgate', component:  Resgate },
+  { path: '/Resgate', exact: true, name: 'Resgate', component:  Resgate }
 ];
 
 export default routes;

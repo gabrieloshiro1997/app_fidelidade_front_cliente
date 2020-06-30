@@ -12,9 +12,9 @@ class Home extends Component {
 		return (
 			<div className="animated fadeIn">
 				<Row>
-						{
+						{this.props.pontuacoes &&
 							this.props.pontuacoes.map((pontuacao, index) => (
-								<CardHome classeCor="info" quantidade={pontuacao.valor} empresa={pontuacao.nome_fantasia} icone="icon-user" />
+								<CardHome classeCor="info" saldo={pontuacao.saldo} empresa={pontuacao.nome_fantasia} icone="icon-user" />
 							))
 						}
 				</Row>
