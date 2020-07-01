@@ -95,7 +95,7 @@ class CadastroCliente extends Component {
 												<Col xs="12">
 													<FormGroup>
 														<Label htmlFor="cpf">CPF</Label>
-														<Text className="form-control" field="cpf" id="cpf" placeholder="Digite seu CPF" />
+														<Text maxLength="11" className="form-control" field="cpf" id="cpf" placeholder="Digite seu CPF" />
 													</FormGroup>
 												</Col>
 											</Row>
