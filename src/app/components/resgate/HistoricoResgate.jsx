@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table, Row, Col } from 'reactstrap';
 import { ObterHistoricoResgateClientePorEstabelecimento } from '../../redux/actions/Resgate/ResgateActions';
+import { formatarData } from '../../../config/utils/helper';
 
 class HistoricoRecompensas extends Component {
 	constructor(props) {
@@ -28,7 +29,7 @@ class HistoricoRecompensas extends Component {
 									<tr key={index} className="text-center align-middle">
 										<td className="text-left">{resgate.descricao}</td>
 										<td className="text-left">{resgate.pontos_gastos}</td>
-										<td className="text-left">{resgate.data_retirada}</td>
+										<td className="text-left">{formatarData(resgate.data_retirada)}</td>
 									</tr>
 								))
 								}

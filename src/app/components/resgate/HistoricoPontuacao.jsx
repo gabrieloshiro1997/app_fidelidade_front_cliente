@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table, Row, Col } from 'reactstrap';
 import { ObterHistoricoPontuacaoClientePorEstabelecimento } from '../../redux/actions/Pontuacao/PontuacaoActions';
+
+import { formatarData } from '../../../config/utils/helper';
 class HistoricoPontuacao extends Component {
 	constructor(props) {
 		super(props);
@@ -26,7 +28,7 @@ class HistoricoPontuacao extends Component {
 									<tr key={index} className="text-center align-middle">
 										<td className="text-left">{pontuacao.descricao}</td>
 										<td className="text-left">{pontuacao.valor}</td>
-										<td className="text-left">{pontuacao.data_pontuacao}</td>
+										<td className="text-left">{formatarData(pontuacao.data_pontuacao)}</td>
 									</tr>
 								))
 								}

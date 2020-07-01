@@ -40,9 +40,15 @@ class CadastroCliente extends Component {
 		let acessoUsuario = acessoUsuarioCliente;
 		let dataNascimento = data.data_nascimento;
 		let sexo = data.sexo;
-		
+
+
 		if (!nome || !cpf || !email || !dataNascimento || !sexo) {
 			NotificationManager.warning('Preencha todos campos!', 'Atenção');
+			return;
+		}
+		
+		if (!(/[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}/.test(cpf)) || cpf.length !== 11) {
+			NotificationManager.warning('Digite um cpf válido!', 'Atenção');
 			return;
 		}
 
@@ -97,7 +103,7 @@ class CadastroCliente extends Component {
 												<Col xs="12">
 													<FormGroup>
 														<Label htmlFor="email">E-mail</Label>
-														<Text className="form-control" field="email" id="email" placeholder="Digite seu e-mail" />
+														<Text type="email" className="form-control" field="email" id="email" placeholder="Digite seu e-mail" />
 													</FormGroup>
 												</Col>
 											</Row>
