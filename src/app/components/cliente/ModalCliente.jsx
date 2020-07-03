@@ -13,7 +13,7 @@ import {
 	Button
 } from 'reactstrap';
 import { NotificationManager } from 'react-notifications';
-
+import { addMaskCpf, removeMaskCpf } from '../../../config/utils/helper';
 
 import { Form, Text, RadioGroup, Radio } from 'informed';
 
@@ -34,7 +34,7 @@ class ModalCliente extends Component {
 		let acessoUsuarioCliente = 3;
 
 		let nome = data.nome;
-		let cpf = data.cpf;
+		let cpf = removeMaskCpf(data.cpf);
 		let email = data.email;
 		let acessoUsuario = acessoUsuarioCliente;
 		let dataNascimento = data.data_nasc;
@@ -135,7 +135,11 @@ class ModalCliente extends Component {
 const MapStateToProps = state => {
 	return {
 		exibirModalEditarCliente: state.ClienteReducer.exibirModalEditarCliente,
-		usuario: state.ClienteReducer.usuario
+		usuario: {
+			...state.ClienteReducer.usuario,
+			cpf: addMaskCpf(state.ClienteReducer.usuario.cpf)
+
+		}
 	}
 }
 

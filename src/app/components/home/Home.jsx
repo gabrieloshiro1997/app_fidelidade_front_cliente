@@ -14,7 +14,7 @@ class Home extends Component {
 				<Row>
 						{this.props.pontuacoes &&
 							this.props.pontuacoes.map((pontuacao, index) => (
-								<CardHome classeCor="info" saldo={pontuacao.saldo} empresa={pontuacao.nome_fantasia} icone="icon-user" />
+								<CardHome key={index} classeCor="info" saldo={pontuacao.saldo} empresa={pontuacao.nome_fantasia} icone="icon-user" />
 							))
 						}
 				</Row>

@@ -19,11 +19,13 @@ import { NotificationManager } from 'react-notifications'
 
 import { CadastrarCliente } from '../../../redux/actions/Cliente/ClienteActions';
 import '../css/Login.css';
+import { addMaskCpf, removeMaskCpf } from '../../../../config/utils/helper';
 
 class CadastroCliente extends Component {
 	constructor(props) {
 		super(props);
 		this.setFormApi = this.setFormApi.bind(this);
+		this.addMaskCpf = this.addMaskCpf.bind(this);
 	}
 
 	setFormApi(formApi) {
@@ -35,7 +37,7 @@ class CadastroCliente extends Component {
 		let acessoUsuarioCliente = 3;
 
 		let nome = data.nome;
-		let cpf = data.cpf;
+		let cpf = removeMaskCpf(data.cpf);
 		let email = data.email;
 		let acessoUsuario = acessoUsuarioCliente;
 		let dataNascimento = data.data_nascimento;
@@ -46,8 +48,8 @@ class CadastroCliente extends Component {
 			NotificationManager.warning('Preencha todos campos!', 'Atenção');
 			return;
 		}
-		
-		if (!(/[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}/.test(cpf)) || cpf.length !== 11) {
+
+		if (cpf.length !== 11) {
 			NotificationManager.warning('Digite um cpf válido!', 'Atenção');
 			return;
 		}
@@ -67,7 +69,11 @@ class CadastroCliente extends Component {
 					this.props.history.push('/Cadastro/Sucesso');
 				}
 			}
-			)
+		)
+	}
+
+	addMaskCpf(event) {
+		this.formApi.setValue('cpf', addMaskCpf(event.target.value));
 	}
 
 	render() {
@@ -95,7 +101,7 @@ class CadastroCliente extends Component {
 												<Col xs="12">
 													<FormGroup>
 														<Label htmlFor="cpf">CPF</Label>
-														<Text maxLength="11" className="form-control" field="cpf" id="cpf" placeholder="Digite seu CPF" />
+														<Text onChange={(e) => this.addMaskCpf(e)} maxLength="14" className="form-control" field="cpf" id="cpf" placeholder="Digite seu CPF" />
 													</FormGroup>
 												</Col>
 											</Row>
