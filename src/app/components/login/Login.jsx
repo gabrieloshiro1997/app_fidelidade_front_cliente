@@ -57,7 +57,7 @@ class Login extends Component {
     }
     handleEnterPress(event) {
       if (event.key === 'Enter') {
-          this.login();
+          this.login(event);
       }
     }
 
@@ -75,7 +75,7 @@ class Login extends Component {
 							<CardGroup>
 								<Card className="p-4">
 									<CardBody>
-										<Form onSubmit={(e) => this.onSubmit(e)}>
+										<Form onKeyUp={(e) => this.handleEnterPress(e)}>
 											<h1>Login</h1>
 											<p className="text-muted">Faça login em sua conta</p>
 											<InputGroup className="mb-3">
@@ -94,17 +94,17 @@ class Login extends Component {
 												</InputGroupAddon>
 												<Input onChange={(e) => this.handleChangeSenha(e)} type="password" placeholder="Senha" autoComplete="current-password" />
 											</InputGroup>
-											<Row>
-												<Col xs="6">
-												<Button onClick={(e) => this.login(e)} color="primary" className="px-4">Login</Button>
-												</Col>
-												<Col xs="6" className="text-right">
-												<Link to="/EsqueciMinhaSenha">
-													<Button color="link" className="px-0" >Esqueci minha senha</Button>
-												</Link>
-												</Col>
-											</Row>
 										</Form>
+										<Row>
+											<Col xs="6">
+											<Button onClick={(e) => this.login(e)} color="primary" className="px-4">Login</Button>
+											</Col>
+											<Col xs="6" className="text-right">
+											<Link to="/EsqueciMinhaSenha">
+												<Button color="link" className="px-0" >Esqueci minha senha</Button>
+											</Link>
+											</Col>
+										</Row>
 									</CardBody>
 								</Card>
 							</CardGroup>
