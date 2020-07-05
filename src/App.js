@@ -15,6 +15,8 @@ const Login = React.lazy(() => import('./app/components/login/Login'));
 const CadastroCliente = React.lazy(() => import('./app/components/login/cadastro/CadastroCliente'));
 const CadastroClienteSucesso = React.lazy(() => import('./app/components/login/cadastro/CadastroClienteSucesso'));
 const ModalCliente = React.lazy(() => import('./app/components/cliente/ModalCliente'));
+const EsqueciMinhaSenha = React.lazy(() => import('./app/components/login/EsqueciMinhaSenha'));
+const RedefinirSenha = React.lazy(() => import('./app/components/login/RedefinirSenha'));
 
 const MapStateToProps = state => {    
   return {
@@ -36,7 +38,8 @@ const App = () => (
 		<Route exact path="/Login" name="Login" render={props => <Login {...props}/>} />
         <Route exact path="/Cadastro" name="Cadastro de Cliente" render={props => <CadastroCliente {...props}/>} />
         <Route exact path="/Cadastro/Sucesso" name="Cadastro do cliente efetuado com sucesso" render={props => <CadastroClienteSucesso {...props}/>} />
-        
+        <Route exact path="/EsqueciMinhaSenha" name="Esqueci minha senha" render={props => <EsqueciMinhaSenha {...props}/>} />
+		<Route exact path="/RedefinirSenha/:token/:email" name="Redefinir senha" render={props => <RedefinirSenha {...props}/>} />
 		<Route path="/" render={props => <DefaultLayout {...props}/>} />
         <Loader />  
       </Switch>

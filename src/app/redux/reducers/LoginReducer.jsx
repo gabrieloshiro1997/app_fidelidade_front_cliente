@@ -7,7 +7,9 @@ import decode from 'jwt-decode';
 
 import { 
     LOGOUT, 
-	LOGIN_SUCCESS
+	LOGIN_SUCCESS,
+	RESETAR_SENHA_SUCCESS,
+	SOLICITAR_REDEFINICAO_SENHA_SUCCESS
 } from '../actions/Login/LoginActionTypes';
 
 const registerJwt = (data) => {
@@ -41,7 +43,15 @@ export default (state = initialState, action) => {
         case LOGOUT: {
             Logout();
             return state;
-        }
+		}
+		
+		case SOLICITAR_REDEFINICAO_SENHA_SUCCESS: {
+			return state;
+		}
+
+		case RESETAR_SENHA_SUCCESS: {
+			return state;
+		}
 
         default:
             return state;       

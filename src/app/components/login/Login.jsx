@@ -99,7 +99,9 @@ class Login extends Component {
 												<Button onClick={(e) => this.login(e)} color="primary" className="px-4">Login</Button>
 												</Col>
 												<Col xs="6" className="text-right">
-												{/* <Button color="link" className="px-0">Esqueci minha senha</Button> */}
+												<Link to="/EsqueciMinhaSenha">
+													<Button color="link" className="px-0" >Esqueci minha senha</Button>
+												</Link>
 												</Col>
 											</Row>
 										</Form>
